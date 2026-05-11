@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#5b7a52">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="뜨온">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>뜨온 — 사회적 이야기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- view container -->
+    <main id="view" class="view"></main>
+
+    <!-- bottom tab bar -->
+    <nav class="tabbar" id="tabbar">
+      <button class="tab" data-view="home" aria-label="홈">
+        <svg viewBox="0 0 24 24" class="tab-ico"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V11z" fill="currentColor"/></svg>
+        <span>홈</span>
+      </button>
+      <button class="tab" data-view="templates" aria-label="템플릿">
+        <svg viewBox="0 0 24 24" class="tab-ico"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        <span>템플릿</span>
+      </button>
+      <button class="tab tab-fab" data-view="editor" aria-label="새 이야기">
+        <span class="fab"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+      </button>
+      <button class="tab" data-view="library" aria-label="보관함">
+        <svg viewBox="0 0 24 24" class="tab-ico"><path d="M6 4h11l3 3v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9h7M9 13h7M9 17h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>보관함</span>
+      </button>
+      <button class="tab" data-view="more" aria-label="더보기">
+        <svg viewBox="0 0 24 24" class="tab-ico"><circle cx="6" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="18" cy="12" r="1.6" fill="currentColor"/></svg>
+        <span>더보기</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- toast / sheet host -->
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <div id="sheet" class="sheet-host" hidden></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(()=>{});
+      });
+    }
+  </script>
+</body>
+</html>
